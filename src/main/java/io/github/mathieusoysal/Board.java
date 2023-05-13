@@ -26,6 +26,7 @@ public class Board {
 
     public static long generateBoardFromString(String boardString) {
         long board = 0b0L;
+        boardString = boardString.replace("\n", "");
         for (int rowIndex = 0; rowIndex < HEIGHT; rowIndex++) {
             for (int columnIndex = 0; columnIndex < WIDTH; columnIndex++) {
                 int index = rowIndex * WIDTH + columnIndex;

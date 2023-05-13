@@ -33,4 +33,21 @@ public class BoardTest {
         assertEquals(excpetedBitString, Long.toBinaryString(Board.generateBoardFromString(boardString)));
     }
 
+
+    @Test
+    public void testGenerateBoardFromString_withLqstCellFilled() {
+        String boardString = "_______\n_______\n_______\n______#\n";
+        long excpectedBoard = 0b0000000_0000000_0000000_0000001L;
+        String excpetedBitString = Long.toBinaryString(excpectedBoard);
+        assertEquals(excpetedBitString, Long.toBinaryString(Board.generateBoardFromString(boardString)));
+    }
+
+    @Test
+    public void testGenerateBoardFromString_withFilledBoard2() {
+        String boardString = "_______\n___#___\n___#___\n______#\n";
+        long excpectedBoard = 0b0000000_0001000_0001000_0000001L;
+        String excpetedBitString = Long.toBinaryString(excpectedBoard);
+        assertEquals(excpetedBitString, Long.toBinaryString(Board.generateBoardFromString(boardString)));
+    }
+
 }
