@@ -39,4 +39,8 @@ public class Board {
     public static long putPieceIntoBoard(long board, long piece) {
         return board | piece;
     }
+
+    public static boolean isCompleted(long board) {
+        return board == 0b1111111_1111111_1111111_1111111L;
+    }
 }

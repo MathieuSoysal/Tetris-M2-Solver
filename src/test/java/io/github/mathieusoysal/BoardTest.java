@@ -102,4 +102,22 @@ public class BoardTest {
         assertEquals(expectedBoard, Board.putPieceIntoBoard(board, piece));
     }
 
+    @Test
+    public void testIsCompleted_withEmptyBoard() {
+        long board = 0b0L;
+        assertFalse(Board.isCompleted(board));
+    }
+
+    @Test
+    public void testIsCompleted_withFilledBoard() {
+        long board = 0b1111111_1111111_1111111_1111111L;
+        assertTrue(Board.isCompleted(board));
+    }
+
+    @Test
+    public void testIsCompleted_withLastCellFilled() {
+        long board = 0b0000000_0000000_0000000_0000001L;
+        assertFalse(Board.isCompleted(board));
+    }
+
 }
