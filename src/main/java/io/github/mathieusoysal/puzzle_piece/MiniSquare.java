@@ -1,6 +1,6 @@
 package io.github.mathieusoysal.puzzle_piece;
 
-public class MiniSquare implements PuzzlePieceInterface {
+class MiniSquare implements PuzzlePieceInterface {
     private static final long SHAPE = 0b1000000_0000000_0000000_0000000L;
     private static final long[] allPossiblePlacements = new long[] {
             0b1000000_0000000_0000000_0000000L,

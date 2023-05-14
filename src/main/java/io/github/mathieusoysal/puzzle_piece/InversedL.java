@@ -1,6 +1,6 @@
 package io.github.mathieusoysal.puzzle_piece;
 
-public class InversedL implements PuzzlePieceInterface {
+class InversedL implements PuzzlePieceInterface {
     private static final long SHAPE = 0b1100000_0100000_0000000_0000000L;
     private static final long[] allPossiblePlacements = new long[] {
             0b1100000_0100000_0000000_0000000L,
