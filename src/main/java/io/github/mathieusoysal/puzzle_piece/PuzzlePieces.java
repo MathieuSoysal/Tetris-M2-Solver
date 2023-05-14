@@ -6,7 +6,7 @@ public enum PuzzlePieces implements PuzzlePieceInterface {
     STICK(new Stick()),
     SQUARE(new Square()),
     INVERSED_L(new InversedL()),
-    MINIS_QUARE(new MiniSquare());
+    MINIS_SQUARE(new MiniSquare());
 
     private final PuzzlePieceInterface piece;
 
