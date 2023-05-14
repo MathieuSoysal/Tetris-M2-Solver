@@ -23,9 +23,6 @@ public class Square implements PuzzlePieceInterface {
             0b0000000_0000000_0000011_0000011L
     };
 
-    public Square() {
-    }
-
     @Override
     public long getShape() {
         return SHAPE;

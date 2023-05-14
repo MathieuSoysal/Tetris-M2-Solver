@@ -19,9 +19,6 @@ public class Stick implements PuzzlePieceInterface {
             0b0000000_0000001_0000001_0000001L
     };
 
-    public Stick() {
-    }
-
     public long getShape() {
         return SHAPE;
     }
