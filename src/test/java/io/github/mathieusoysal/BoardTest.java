@@ -1,6 +1,8 @@
 package io.github.mathieusoysal;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -45,7 +47,6 @@ public class BoardTest {
         assertEquals(excpetedBitString, Long.toBinaryString(Board.generateBoardFromString(boardString)));
     }
 
-
     @Test
     public void testGenerateBoardFromString_withLqstCellFilled() {
         String boardString = "_______\n_______\n_______\n______#\n";
@@ -68,6 +69,27 @@ public class BoardTest {
         long excpectedBoard = 0b1111111_1111111_1111111_1111111L;
         String excpetedBitString = Long.toBinaryString(excpectedBoard);
         assertEquals(excpetedBitString, Long.toBinaryString(Board.generateBoardFromString(boardString)));
+    }
+
+    @Test
+    public void testCanPut_withEmptyBoard() {
+        long board = 0b0L;
+        long piece = 0b1000000_0000000_0000000_0000000L;
+        assertTrue(Board.canPut(board, piece));
+    }
+
+    @Test
+    public void testCanPut_withFilledBoard() {
+        long board = 0b1000000_0000000_0000000_0000000L;
+        long piece = 0b1000000_0000000_0000000_0000000L;
+        assertFalse(Board.canPut(board, piece));
+    }
+
+    @Test
+    public void testCanPut_withLastCellFilled() {
+        long board = 0b0000000_0000000_1111111_1111111L;
+        long piece = 0b1111111_1111111_0000000_0000000L;
+        assertTrue(Board.canPut(board, piece));
     }
 
 }

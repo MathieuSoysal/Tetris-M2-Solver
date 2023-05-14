@@ -31,4 +31,8 @@ public class Board {
         }
         return board;
     }
+
+    public static boolean canPut(long board, long piece) {
+        return (board & piece) == 0;
+    }
 }
