@@ -50,4 +50,12 @@ public class BoardTest {
         assertEquals(excpetedBitString, Long.toBinaryString(Board.generateBoardFromString(boardString)));
     }
 
+    @Test
+    public void testGenerateBoardFromString_withAllFilledBoard() {
+        String boardString = "#######\n#######\n#######\n#######\n";
+        long excpectedBoard = 0b1111111_1111111_1111111_1111111L;
+        String excpetedBitString = Long.toBinaryString(excpectedBoard);
+        assertEquals(excpetedBitString, Long.toBinaryString(Board.generateBoardFromString(boardString)));
+    }
+
 }
