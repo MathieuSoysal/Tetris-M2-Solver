@@ -8,20 +8,11 @@ public class Board {
     private static final char FILLED = '#';
 
     public static String toString(long board) {
-        StringBuilder stringBuilder = new StringBuilder();
-        String boardString = Long.toBinaryString(board);
-        for (int rowIndex = 0; rowIndex < HEIGHT; rowIndex++) {
-            for (int columnIndex = 0; columnIndex < WIDTH; columnIndex++) {
-                int index = rowIndex * WIDTH + columnIndex;
-                if (index < boardString.length()) {
-                    stringBuilder.append(boardString.charAt(index) == '1' ? FILLED : EMPTY);
-                } else {
-                    stringBuilder.append(EMPTY);
-                }
-            }
-            stringBuilder.append("\n");
-        }
-        return stringBuilder.toString();
+        String boardString = Long.toBinaryString(board)
+                .replace('0', EMPTY)
+                .replace('1', FILLED);
+        boardString = String.valueOf(EMPTY).repeat(SIZE - boardString.length()) + boardString;
+        return String.join("\n", boardString.split("(?<=\\G.{7})")) + "\n";
     }
 
     public static long generateBoardFromString(String boardString) {
