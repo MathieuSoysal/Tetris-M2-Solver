@@ -7,6 +7,9 @@ public class Board {
     private static final char EMPTY = '_';
     private static final char FILLED = '#';
 
+    private Board() {
+    }
+
     public static String toString(long board) {
         String boardString = Long.toBinaryString(board)
                 .replace('0', EMPTY)
