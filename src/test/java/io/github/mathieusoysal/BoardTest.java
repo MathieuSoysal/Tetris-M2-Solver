@@ -75,21 +75,21 @@ public class BoardTest {
     public void testCanPut_withEmptyBoard() {
         long board = 0b0L;
         long piece = 0b1000000_0000000_0000000_0000000L;
-        assertTrue(Board.canPut(board, piece));
+        assertTrue(Board.canPutPieceIntoBoard(board, piece));
     }
 
     @Test
     public void testCanPut_withFilledBoard() {
         long board = 0b1000000_0000000_0000000_0000000L;
         long piece = 0b1000000_0000000_0000000_0000000L;
-        assertFalse(Board.canPut(board, piece));
+        assertFalse(Board.canPutPieceIntoBoard(board, piece));
     }
 
     @Test
     public void testCanPut_withLastCellFilled() {
         long board = 0b0000000_0000000_1111111_1111111L;
         long piece = 0b1111111_1111111_0000000_0000000L;
-        assertTrue(Board.canPut(board, piece));
+        assertTrue(Board.canPutPieceIntoBoard(board, piece));
     }
 
 }
