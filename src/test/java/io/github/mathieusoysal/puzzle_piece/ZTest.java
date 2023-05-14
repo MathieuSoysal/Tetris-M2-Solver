@@ -4,13 +4,13 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import io.github.mathieusoysal.Board;
+import io.github.mathieusoysal.BoardManager;
 
 public class ZTest {
 
     @Test
     public void testZ_getShape() {
-        assertEquals("##_____\n_##____\n_______\n_______\n", Board.toString(new Z().getShape()));
+        assertEquals("##_____\n_##____\n_______\n_______\n", BoardManager.toString(new Z().getShape()));
     }
 
 }

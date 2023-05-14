@@ -1,13 +1,13 @@
 package io.github.mathieusoysal;
 
-public class Board {
+public class BoardManager {
     private static final int HEIGHT = 4;
     private static final int WIDTH = 7;
     private static final int SIZE = HEIGHT * WIDTH;
     private static final char EMPTY = '_';
     private static final char FILLED = '#';
 
-    private Board() {
+    private BoardManager() {
     }
 
     public static String toString(long board) {
