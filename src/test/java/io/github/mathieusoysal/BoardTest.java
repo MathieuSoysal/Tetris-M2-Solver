@@ -19,6 +19,18 @@ public class BoardTest {
     }
 
     @Test
+    public void testBoard_withLastCellFilled() {
+        long board = 0b0000000_0000000_0000000_0000001L;
+        assertEquals("_______\n_______\n_______\n______#\n", Board.toString(board));
+    }
+
+    @Test
+    public void testBoard_withAllFilledBoard() {
+        long board = 0b1111111_1111111_1111111_1111111L;
+        assertEquals("#######\n#######\n#######\n#######\n", Board.toString(board));
+    }
+
+    @Test
     public void testGenerateBoardFromString_withEmptyBoard() {
         String boardString = "_______\n_______\n_______\n_______\n";
         long excpectedBoard = 0b0L;
