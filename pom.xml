@@ -254,9 +254,6 @@
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
                 <version>1.13.1</version>
-                <mutators>
-                    <mutator>ALL</mutator>
-                </mutators>
                 <configuration>
                     <outputFormats>HTML</outputFormats>
                     <verbose>true</verbose>
