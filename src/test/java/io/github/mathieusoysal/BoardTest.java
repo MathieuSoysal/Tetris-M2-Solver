@@ -6,6 +6,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import io.github.mathieusoysal.puzzle_piece.PuzzlePieces;
+
 public class BoardTest {
 
     @Test
@@ -90,6 +92,14 @@ public class BoardTest {
         long board = 0b0000000_0000000_1111111_1111111L;
         long piece = 0b1111111_1111111_0000000_0000000L;
         assertTrue(Board.canPutPieceIntoBoard(board, piece));
+    }
+
+    @Test
+    public void testPutPieceIntoBoard_withEmptyBoard() {
+        long board = 0b0L;
+        long piece = PuzzlePieces.MINIS_SQUARE.getShape();
+        long expectedBoard = 0b1000000_0000000_0000000_0000000L;
+        assertEquals(expectedBoard, Board.putPieceIntoBoard(board, piece));
     }
 
 }
