@@ -5,7 +5,7 @@ class SolutionsStorage {
     private int size;
 
     public SolutionsStorage() {
-        keys = new long[2 << 28];
+        keys = new long[2 << 20];
         size = 0;
     }
 
