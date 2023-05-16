@@ -5,7 +5,12 @@ class SolutionsStorage {
     private int size;
 
     public SolutionsStorage() {
-        keys = new long[2 << 20];
+        keys = new long[2 << 15];
+        size = 0;
+    }
+
+    public SolutionsStorage(byte size) {
+        keys = new long[2 << size];
         size = 0;
     }
 
@@ -46,6 +51,8 @@ class SolutionsStorage {
     }
 
     private void resize() {
+        long heapsize = Runtime.getRuntime().totalMemory();
+        System.out.println("Heap size: " + heapsize * 0.000001 + " MB " + keys.length + " size");
         long[] oldKeys = keys;
         keys = new long[keys.length * 2];
         size = 0;
