@@ -5,7 +5,7 @@ public class BinIterator {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public static int getNextIndex(long list, int size, int currentIndex) {
+    public static int getNextIndex(long list, int currentIndex) {
         long temp = (list + (1 << currentIndex));
         temp -= (temp & list);
         return (63 - Long.numberOfLeadingZeros(temp));
