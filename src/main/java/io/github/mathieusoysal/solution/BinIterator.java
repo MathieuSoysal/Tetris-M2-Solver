@@ -2,7 +2,7 @@ package io.github.mathieusoysal.solution;
 
 public class BinIterator {
     public static boolean hasNext(long list, int size, int currentIndex) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        return getNextIndex(list, currentIndex) < size;
     }
 
     public static int getNextIndex(long list, int currentIndex) {
