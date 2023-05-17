@@ -8,8 +8,6 @@ import org.junit.Test;
 
 public class BinIteratorTest {
 
-
-
     @Test
     public void testGetNextInt_with0IndexAndEmptyList_shouldReturn0() {
         long list = 0b100L;
@@ -28,7 +26,6 @@ public class BinIteratorTest {
         assertEquals(expected, actual);
     }
 
-
     @Test
     public void testGetNextInt_with1IndexAndListWithOneElement_shouldReturn2() {
         long list = 0b01L;
@@ -37,7 +34,6 @@ public class BinIteratorTest {
         int actual = BinIterator.getNextIndex(list, currentIndex);
         assertEquals(expected, actual);
     }
-
 
     @Test
     public void testGetNextInt_with1IndexAndListWithTwoElements_shouldReturn2() {
@@ -118,6 +114,16 @@ public class BinIteratorTest {
         int currentIndex = 0;
         boolean actual = BinIterator.hasNext(list, size, currentIndex);
         assertFalse(actual);
+    }
+
+    @Test
+    public void testBoucle() {
+        long list = (1L << 10 | 1L << 16) ^ ((1L << 33) - 1);
+        int size = 32;
+        int currentIndex = BinIterator.getNextIndex(list, 0);
+        currentIndex = BinIterator.getNextIndex(list, currentIndex + 1);
+        currentIndex = BinIterator.getNextIndex(list, currentIndex + 1);
+        assertFalse(BinIterator.hasNext(list, size, currentIndex +1));
     }
 
 }
