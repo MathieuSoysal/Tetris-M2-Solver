@@ -53,4 +53,22 @@ public class SolutionBitMapperTest {
         int actual = SolutionBitMapper.getBoardFromSolutionBitMap(solutionBitMap);
         assertEquals(Integer.toBinaryString(expected), Integer.toBinaryString(actual));
     }
+
+    @Test
+    public void testGetPuzzlePieceIndexFromSolutionBitMap_0() {
+        int solutionBitMap = 0b111_0000000_0000000_0000000_0000000;
+
+        int expected = 7;
+        int actual = SolutionBitMapper.getPuzzlePieceIndexFromSolutionBitMap(solutionBitMap);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGetPuzzlePieceIndexFromSolutionBitMap_1() {
+        int solutionBitMap = 0b110_1111111_1111111_1111111_1111111;
+
+        int expected = 6;
+        int actual = SolutionBitMapper.getPuzzlePieceIndexFromSolutionBitMap(solutionBitMap);
+        assertEquals(expected, actual);
+    }
 }

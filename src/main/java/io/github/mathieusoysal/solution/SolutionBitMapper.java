@@ -12,5 +12,9 @@ public class SolutionBitMapper {
     public static int getBoardFromSolutionBitMap(int solutionBitMap) {
         return solutionBitMap & BOARD_MASK;
     }
+
+    public static int getPuzzlePieceIndexFromSolutionBitMap(int solutionBitMap) {
+        return solutionBitMap >>> 28;
+    }
     
 }
