@@ -41,12 +41,12 @@ To use this template, you just need to click on "Use this template" at the top o
 classDiagram
     class TetrisSolver{
       +solve(PuzzlePiece firstPuzzlePieces)$ HashMap<Integer, >
-      -solve(HashSet~Solution~ backTrack,  long board, int nbUsePz1, int nbUsePz2, int nbUsePz3, int nbUsePz4, int nbUsePz5, int nbUsePz6)$
+      -solve(HashSet~Solution~ backTrack,  int board, int nbUsePz1, int nbUsePz2, int nbUsePz3, int nbUsePz4, int nbUsePz5, int nbUsePz6)$
     }
 
     class Board{
-      +toString(long board)$ String
-      +canPutPuzzlePieceOnBoard(long board, long puzzlePiecePlacement)$ bool
+      +toString(int board)$ String
+      +canPutPuzzlePieceOnBoard(int board, int puzzlePiecePlacement)$ bool
     }
     Board ..> PuzzlePiece
     Board ..> CoordinateCalculator
@@ -66,51 +66,51 @@ classDiagram
       MINI_SQUARE
       Z
 
-      +getShape() long
-      +getAllPossiblePlacementInTheBoard() long[]
+      +getShape() int
+      +getAllPossiblePlacementInTheBoard() int[]
     }
     PuzzlePiece <|-- PuzzlePieceInterface
     PuzzlePiece --> PuzzlePieceInterface
 
     class PuzzlePieceInterface{
       <<interface>>
-      +getShape() long
-      +getAllPossiblePlacementOnTheBoard() long[]
+      +getShape() int
+      +getAllPossiblePlacementOnTheBoard() int[]
     }
 
     class Stick{
-      +getShape() long
-      +getAllPossiblePlacementOnTheBoard() long[]
+      +getShape() int
+      +getAllPossiblePlacementOnTheBoard() int[]
     }
     Stick <|-- PuzzlePieceInterface
 
     class Square{
-      +getShape() long
-      +getAllPossiblePlacementOnTheBoard() long[]
+      +getShape() int
+      +getAllPossiblePlacementOnTheBoard() int[]
     }
     Square <|-- PuzzlePieceInterface
 
     class L{
-      +getShape() long
-      +getAllPossiblePlacementOnTheBoard() long[]
+      +getShape() int
+      +getAllPossiblePlacementOnTheBoard() int[]
     }
     L <|-- PuzzlePieceInterface
 
     class Inversed_L{
-      +getShape() long
-      +getAllPossiblePlacementOnTheBoard() long[]
+      +getShape() int
+      +getAllPossiblePlacementOnTheBoard() int[]
     }
     Inversed_L <|-- PuzzlePieceInterface
 
     class Mini_Square{
-      +getShape() long
-      +getAllPossiblePlacementOnTheBoard() long[]
+      +getShape() int
+      +getAllPossiblePlacementOnTheBoard() int[]
     }
     Mini_Square <|-- PuzzlePieceInterface
 
     class Z{
-      +getShape() long
-      +getAllPossiblePlacementOnTheBoard() long[]
+      +getShape() int
+      +getAllPossiblePlacementOnTheBoard() int[]
     }
     Z <|-- PuzzlePieceInterface
 

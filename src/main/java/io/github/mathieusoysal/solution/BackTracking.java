@@ -11,7 +11,7 @@ public class BackTracking {
         this.solutionsStorage = new SolutionsStorage((byte) 25);
     }
 
-    public boolean addTrack(long board, int deep, int indexPosition, int nbUseOfL, int nbUseOfZ, int nbUseOfInversedL,
+    public boolean addTrack(int board, int deep, int indexPosition, int nbUseOfL, int nbUseOfZ, int nbUseOfInversedL,
             int nbUseOfSquare, int nbUseOfMiniSquare, int nbUseOfStick) {
         if (deep > MAX_DEEP)
             return false;
@@ -21,7 +21,7 @@ public class BackTracking {
             return false;
         return deep > 8 ||
                 solutionsStorage.addSolution(board,
-                        SolutionsManager.bitMapperOfNbUse(nbUseOfL, nbUseOfInversedL, nbUseOfZ, nbUseOfInversedL,
+                        SolutionsManager.bitMapperOfNbUse(nbUseOfL, nbUseOfInversedL, nbUseOfZ, nbUseOfStick,
                                 nbUseOfSquare,
                                 nbUseOfMiniSquare));
     }

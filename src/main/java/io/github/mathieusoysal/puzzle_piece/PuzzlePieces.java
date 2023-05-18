@@ -15,12 +15,12 @@ public enum PuzzlePieces implements PuzzlePieceInterface {
     }
 
     @Override
-    public long getShape() {
+    public int getShape() {
         return piece.getShape();
     }
 
     @Override
-    public long[] getAllPossiblePlacements() {
+    public int[] getAllPossiblePlacements() {
         return piece.getAllPossiblePlacements();
     }
 

@@ -1,7 +1,7 @@
 package io.github.mathieusoysal.puzzle_piece;
 
 interface PuzzlePieceInterface {
-    long getShape();
+    int getShape();
 
-    long[] getAllPossiblePlacements();
+    int[] getAllPossiblePlacements();
 }

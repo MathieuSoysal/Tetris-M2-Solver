@@ -1,13 +1,18 @@
 package io.github.mathieusoysal.solution;
 
 public class BinIterator {
-    public static boolean hasNext(long list, int size, int currentIndex) {
-        return getNextIndex(list, currentIndex) < size;
+    public static final int MAX_INDEX = Integer.SIZE;
+
+    public static boolean hasNext(int list, int size, int currentIndex) {
+        if (size == 0 || currentIndex < 0 || currentIndex >= size || currentIndex >= MAX_INDEX)
+            return false;
+        int nextIndex = getNextIndex(list, currentIndex);
+        return nextIndex >= 0 && nextIndex < size && nextIndex < MAX_INDEX;
     }
 
-    public static int getNextIndex(long list, int currentIndex) {
-        long temp = (list + (1L << currentIndex));
+    public static int getNextIndex(int list, int currentIndex) {
+        int temp = (list + (1 << currentIndex));
         temp -= (temp & list);
-        return (63 - Long.numberOfLeadingZeros(temp));
+        return ((MAX_INDEX - 1) - Integer.numberOfLeadingZeros(temp));
     }
 }

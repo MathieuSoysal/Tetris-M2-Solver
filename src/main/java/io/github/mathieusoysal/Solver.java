@@ -18,7 +18,7 @@ public class Solver {
         }
 
         public void solve() {
-                long[] allPossiblePlacements = firstPiece.getAllPossiblePlacements();
+                int[] allPossiblePlacements = firstPiece.getAllPossiblePlacements();
                 for (int i = 0; i < allPossiblePlacements.length; i++) {
                         System.out.println("i = " + i
                                         + " cell-score: " + BoardEvaluator.evaluate(allPossiblePlacements[i])
@@ -27,7 +27,7 @@ public class Solver {
                 }
         }
 
-        private long solve(long board, int deep, int indexPosition, int nbUseOfL, int nbUseOfZ, int nbUseOfInversedL,
+        private int solve(int board, int deep, int indexPosition, int nbUseOfL, int nbUseOfZ, int nbUseOfInversedL,
                         int nbUseOfSquare, int nbUseOfMiniSquare, int nbUseOfStick) {
                 if (!backTracking.addTrack(board, deep, indexPosition, nbUseOfL, nbUseOfZ, nbUseOfInversedL,
                                 nbUseOfSquare,
@@ -40,7 +40,7 @@ public class Solver {
                                         nbUseOfMiniSquare, nbUseOfStick);
                         return 300;
                 }
-                long result = 0;
+                int result = 0;
                 if (nbUseOfL < 4)
                         result += explorePossibilityForPuzzlePiece(PuzzlePieces.L, board, deep, indexPosition,
                                         nbUseOfL + 1,
@@ -92,22 +92,22 @@ public class Solver {
                 return result;
         }
 
-        private long explorePossibilityForPuzzlePiece(PuzzlePieces piece, long board, int deep, int indexPosition,
-                        int nbUseOfL,
+        private int explorePossibilityForPuzzlePiece(PuzzlePieces piece, int board, int deep, int indexPosition,
+                        int nbUseOf,
                         int nbUseOfZ,
-                        int nbUseOfInversedL,
+                        int nbUseOfInversed,
                         int nbUseOfSquare, int nbUseOfMiniSquare, int nbUseOfStick) {
-                long list = BoardEvaluator.getBestPlacementOnTheBoard(board, piece);
-                long[] allPossiblePlacements = piece.getAllPossiblePlacements();
-                long result = 0;
+                int list = BoardEvaluator.getBestPlacementOnTheBoard(board, piece);
+                int[] allPossiblePlacements = piece.getAllPossiblePlacements();
+                int result = 0;
                 for (int i = BinIterator.getNextIndex(list, 0); BinIterator.hasNext(list, allPossiblePlacements.length,
                                 i); i = BinIterator.getNextIndex(list, i + 1)) {
-                        long pieceOnBoard = allPossiblePlacements[i];
+                        int pieceOnBoard = allPossiblePlacements[i];
                         if (BoardManager.canPutPieceIntoBoard(board, pieceOnBoard)) {
                                 result = Math.max(solve(BoardManager.putPieceIntoBoard(board, pieceOnBoard), deep + 1,
                                                 indexPosition,
-                                                nbUseOfL,
-                                                nbUseOfZ, nbUseOfInversedL, nbUseOfSquare, nbUseOfMiniSquare,
+                                                nbUseOf,
+                                                nbUseOfZ, nbUseOfInversed, nbUseOfSquare, nbUseOfMiniSquare,
                                                 nbUseOfStick), result);
                         }
                 }

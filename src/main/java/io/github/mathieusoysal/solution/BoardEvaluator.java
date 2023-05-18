@@ -5,10 +5,10 @@ import io.github.mathieusoysal.puzzle_piece.PuzzlePieces;
 
 public class BoardEvaluator {
 
-        public static int evaluate(long board) {
+        public static int evaluate(int board) {
                 int score = 0;
                 // Calculate Stick
-                long[] p = PuzzlePieces.STICK.getAllPossiblePlacements();
+                int[] p = PuzzlePieces.STICK.getAllPossiblePlacements();
                 int nbStick = countIfisValid(board, p[0])
                                 + countIfisValid(board, p[1])
                                 + countIfisValid(board, p[2])
@@ -139,15 +139,15 @@ public class BoardEvaluator {
                 return nbInversedL * 3 + nbL * 3 + nbSquare * 4 + nbZ * 4 + nbMiniSquare * 1 + nbStick * 3;
         }
 
-        private static int countIfisValid(long board, long placement) {
+        private static int countIfisValid(int board, int placement) {
                 if (BoardManager.canPutPieceIntoBoard(placement, board))
                         return BoardManager.isCompleted(BoardManager.putPieceIntoBoard(board, placement)) ? 300 : 1;
                 return 0;
         }
 
-        public static long getBestPlacementOnTheBoard(long board, PuzzlePieces piece) {
-                long list = 0b0L;
-                long[] p = piece.getAllPossiblePlacements();
+        public static int getBestPlacementOnTheBoard(int board, PuzzlePieces piece) {
+                int list = 0b0;
+                int[] p = piece.getAllPossiblePlacements();
                 int max = 0;
                 for (int i = 0; i < p.length; i++) {
                         if (BoardManager.canPutPieceIntoBoard(p[i], board)) {
@@ -160,7 +160,7 @@ public class BoardEvaluator {
                                 }
                         }
                 }
-                return list ^ ((1L << 33) - 1);
+                return list ^ ~0;
         }
 
 }

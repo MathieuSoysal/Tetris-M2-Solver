@@ -12,30 +12,30 @@ public class SolutionsManager {
         }
     }
 
-    public boolean addSolution(int positionIndex, long board, int nbUseOfL, int nbUseOfInvertedL, int nbUseOfZ,
+    public boolean addSolution(int positionIndex, int board, int nbUseOf, int nbUseOfInverted, int nbUseOfZ,
             int nbUseOfInvertedZ, int nbUseOfSquare, int nbUseOfMiniSquare) {
-        long nbUsesOfEachPieces = bitMapperOfNbUse(nbUseOfL, nbUseOfInvertedL, nbUseOfZ, nbUseOfInvertedZ,
+        int nbUsesOfEachPieces = bitMapperOfNbUse(nbUseOf, nbUseOfInverted, nbUseOfZ, nbUseOfInvertedZ,
                 nbUseOfSquare, nbUseOfMiniSquare);
         return solutionsStorages[positionIndex].addSolution(board, nbUsesOfEachPieces);
     }
 
-    public boolean contains(int positionIndex, long board, int nbUseOfL, int nbUseOfInvertedL, int nbUseOfZ,
+    public boolean contains(int positionIndex, int board, int nbUseOf, int nbUseOfInverted, int nbUseOfZ,
             int nbUseOfInvertedZ, int nbUseOfSquare, int nbUseOfMiniSquare) {
-        long nbUsesOfEachPieces = bitMapperOfNbUse(nbUseOfL, nbUseOfInvertedL, nbUseOfZ, nbUseOfInvertedZ,
+        int nbUsesOfEachPieces = bitMapperOfNbUse(nbUseOf, nbUseOfInverted, nbUseOfZ, nbUseOfInvertedZ,
                 nbUseOfSquare, nbUseOfMiniSquare);
         return solutionsStorages[positionIndex].contains(board, nbUsesOfEachPieces);
     }
 
-    static long bitMapperOfNbUse(int nbUseOfL,
+    static int bitMapperOfNbUse(int nbUseOf,
             int nbUseOfInvertedL,
             int nbUseOfZ,
-            int nbUseOfInvertedZ,
+            int nbUseOfStick,
             int nbUseOfSquare,
             int nbUseOfMiniSquare) {
-        long nbUsesOfEachPieces = nbUseOfL;
+        int nbUsesOfEachPieces = nbUseOf;
         nbUsesOfEachPieces |= nbUseOfInvertedL << 3;
         nbUsesOfEachPieces |= nbUseOfZ << 6;
-        nbUsesOfEachPieces |= nbUseOfInvertedZ << 9;
+        nbUsesOfEachPieces |= nbUseOfStick << 9;
         nbUsesOfEachPieces |= nbUseOfSquare << 12;
         nbUsesOfEachPieces |= nbUseOfMiniSquare << 15;
         return nbUsesOfEachPieces;

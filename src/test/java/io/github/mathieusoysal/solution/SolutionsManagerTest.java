@@ -12,8 +12,8 @@ public class SolutionsManagerTest {
 
     @Test
     public void testBitMapper() {
-        long nbUsesOfEachPieces = SolutionsManager.bitMapperOfNbUse(1, 1, 1, 1, 1, 1);
-        long expected = 0b001_001_001_001_001_001L;
+        int nbUsesOfEachPieces = SolutionsManager.bitMapperOfNbUse(1, 1, 1, 1, 1, 1);
+        int expected = 0b001_001_001_001_001_001;
         assertEquals(expected, nbUsesOfEachPieces);
     }
 

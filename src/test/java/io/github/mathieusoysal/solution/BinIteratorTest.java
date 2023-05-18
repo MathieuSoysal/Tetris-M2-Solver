@@ -10,7 +10,7 @@ public class BinIteratorTest {
 
     @Test
     public void testGetNextInt_with0IndexAndEmptyList_shouldReturn0() {
-        long list = 0b100L;
+        int list = 0b100;
         int currentIndex = 1;
         int expected = 1;
         int actual = BinIterator.getNextIndex(list, currentIndex);
@@ -19,7 +19,7 @@ public class BinIteratorTest {
 
     @Test
     public void testGetNextInt_with0IndexAndListWithOneElement_shouldReturn1() {
-        long list = 0b1L;
+        int list = 0b1;
         int currentIndex = 0;
         int expected = 1;
         int actual = BinIterator.getNextIndex(list, currentIndex);
@@ -28,7 +28,7 @@ public class BinIteratorTest {
 
     @Test
     public void testGetNextInt_with1IndexAndListWithOneElement_shouldReturn2() {
-        long list = 0b01L;
+        int list = 0b01;
         int currentIndex = 0;
         int expected = 1;
         int actual = BinIterator.getNextIndex(list, currentIndex);
@@ -37,7 +37,7 @@ public class BinIteratorTest {
 
     @Test
     public void testGetNextInt_with1IndexAndListWithTwoElements_shouldReturn2() {
-        long list = 0b011L;
+        int list = 0b011;
         int currentIndex = 0;
         int expected = 2;
         int actual = BinIterator.getNextIndex(list, currentIndex);
@@ -46,7 +46,7 @@ public class BinIteratorTest {
 
     @Test
     public void testGetNextInt_with2IndexAndListWithSeveralElements_shouldReturn2() {
-        long list = 0b1111011L;
+        int list = 0b1111011;
         int currentIndex = 1;
         int expected = 2;
         int actual = BinIterator.getNextIndex(list, currentIndex);
@@ -55,7 +55,7 @@ public class BinIteratorTest {
 
     @Test
     public void testGetNextInt_with2IndexAndListWithSeveralElements_shouldReturn3() {
-        long list = 0b1110110L;
+        int list = 0b1110110;
         int currentIndex = 2;
         int expected = 3;
         int actual = BinIterator.getNextIndex(list, currentIndex);
@@ -63,18 +63,18 @@ public class BinIteratorTest {
     }
 
     @Test
-    public void testHasNext_with0IndexAndEmptyListAndSize32_shouldReturnTrue() {
-        long list = 0b0L;
-        int size = 32;
+    public void testHasNext_with0IndexAndEmptyListAndSize31_shouldReturnTrue() {
+        int list = 0b0;
+        int size = 31;
         int currentIndex = 0;
         boolean actual = BinIterator.hasNext(list, size, currentIndex);
         assertTrue(actual);
     }
 
     @Test
-    public void testHasNext_with0IndexAndListWithOneElementAndSize32_shouldReturnTrue() {
-        long list = 0b1L;
-        int size = 32;
+    public void testHasNext_with0IndexAndListWithOneElementAndSize31_shouldReturnTrue() {
+        int list = 0b1;
+        int size = 31;
         int currentIndex = 0;
         boolean actual = BinIterator.hasNext(list, size, currentIndex);
         assertTrue(actual);
@@ -82,7 +82,7 @@ public class BinIteratorTest {
 
     @Test
     public void testHasNext_with0IndexAndListWithOneElementAndSize1_shouldReturnFalse() {
-        long list = 0b1L;
+        int list = 0b1;
         int size = 1;
         int currentIndex = 0;
         boolean actual = BinIterator.hasNext(list, size, currentIndex);
@@ -91,7 +91,7 @@ public class BinIteratorTest {
 
     @Test
     public void testHasNext_with0IndexAndListWithOneElementAndSize2_shouldReturnTrue() {
-        long list = 0b100000L;
+        int list = 0b100000;
         int size = 2;
         int currentIndex = 0;
         boolean actual = BinIterator.hasNext(list, size, currentIndex);
@@ -100,7 +100,7 @@ public class BinIteratorTest {
 
     @Test
     public void testHasNext_with0IndexAndListWithOneElementAndSize3_shouldReturnTrue() {
-        long list = 0b100000L;
+        int list = 0b100000;
         int size = 6;
         int currentIndex = 5;
         boolean actual = BinIterator.hasNext(list, size, currentIndex);
@@ -109,7 +109,7 @@ public class BinIteratorTest {
 
     @Test
     public void testHasNext_with0IndexAndListWithOneElementAndSize3_shouldReturnFalse() {
-        long list = 0b111111L;
+        int list = 0b111111;
         int size = 6;
         int currentIndex = 0;
         boolean actual = BinIterator.hasNext(list, size, currentIndex);
@@ -118,10 +118,9 @@ public class BinIteratorTest {
 
     @Test
     public void testBoucle() {
-        long list = (1L << 10 | 1L << 16) ^ ((1L << 33) - 1);
-        int size = 32;
+        int list = (1 << 10 | 1 << 16) ^ ~0;
+        int size = 31;
         int currentIndex = BinIterator.getNextIndex(list, 0);
-        currentIndex = BinIterator.getNextIndex(list, currentIndex + 1);
         currentIndex = BinIterator.getNextIndex(list, currentIndex + 1);
         assertFalse(BinIterator.hasNext(list, size, currentIndex +1));
     }

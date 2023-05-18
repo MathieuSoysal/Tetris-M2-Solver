@@ -13,7 +13,7 @@ public class BoardEvaluatorTest {
 
     @Test
     public void testEvaluate_forEmptyBoard() {
-        long board = 0L;
+        int board = 0;
         int score = BoardEvaluator.evaluate(board);
         int expected = PuzzlePieces.MINIS_SQUARE.getAllPossiblePlacements().length * 1
                 + PuzzlePieces.STICK.getAllPossiblePlacements().length * 3
@@ -26,18 +26,18 @@ public class BoardEvaluatorTest {
 
     @Test
     public void testGetBestPlacement_fotEasyBoard() {
-        long board = 0b1111111_1100111_1100111_1111111L;
-        long bestPlacement = BoardEvaluator.getBestPlacementOnTheBoard(board, PuzzlePieces.MINIS_SQUARE);
-        long expected = (1L << 10 | 1L << 16) ^ ((1L << 33) - 1);
+        int board = 0b1111111_1100111_1100111_1111111;
+        int bestPlacement = BoardEvaluator.getBestPlacementOnTheBoard(board, PuzzlePieces.MINIS_SQUARE);
+        int expected = (1 << 10 | 1 << 16) ^ ~0;
         assertEquals(Long.toBinaryString(expected), Long.toBinaryString(bestPlacement));
     }
 
     @Test
     public void testGetBestPlacement_WithBinIterator() {
-        long board = 0b1111111_1100111_1100111_1111111L;
-        long bestPlacement = BoardEvaluator.getBestPlacementOnTheBoard(board, PuzzlePieces.MINIS_SQUARE);
+        int board = 0b1111111_1100111_1100111_1111111;
+        int bestPlacement = BoardEvaluator.getBestPlacementOnTheBoard(board, PuzzlePieces.MINIS_SQUARE);
         int bclCount = 0;
-        for (int i = getNextIndex(bestPlacement, 0); hasNext(bestPlacement, 32,
+        for (int i = getNextIndex(bestPlacement, 0); hasNext(bestPlacement, 31,
                 i); i = getNextIndex(bestPlacement, i + 1)) {
             bclCount++;
         }

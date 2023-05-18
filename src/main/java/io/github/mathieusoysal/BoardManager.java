@@ -10,7 +10,7 @@ public class BoardManager {
     private BoardManager() {
     }
 
-    public static String toString(long board) {
+    public static String toString(int board) {
         String boardString = Long.toBinaryString(board)
                 .replace('0', EMPTY)
                 .replace('1', FILLED);
@@ -18,8 +18,8 @@ public class BoardManager {
         return String.join("\n", boardString.split("(?<=\\G.{7})")) + "\n";
     }
 
-    public static long generateBoardFromString(String boardString) {
-        long board = 0b0L;
+    public static int generateBoardFromString(String boardString) {
+        int board = 0b0;
         boardString = boardString.replace("\n", "");
         for (int rowIndex = 0; rowIndex < HEIGHT; rowIndex++) {
             for (int columnIndex = 0; columnIndex < WIDTH; columnIndex++) {
@@ -32,15 +32,15 @@ public class BoardManager {
         return board;
     }
 
-    public static boolean canPutPieceIntoBoard(long board, long piece) {
+    public static boolean canPutPieceIntoBoard(int board, int piece) {
         return (board & piece) == 0;
     }
 
-    public static long putPieceIntoBoard(long board, long piece) {
+    public static int putPieceIntoBoard(int board, int piece) {
         return board | piece;
     }
 
-    public static boolean isCompleted(long board) {
-        return board == 0b1111111_1111111_1111111_1111111L;
+    public static boolean isCompleted(int board) {
+        return board == 0b1111111_1111111_1111111_1111111;
     }
 }
