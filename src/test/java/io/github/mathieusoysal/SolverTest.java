@@ -12,7 +12,7 @@ public class SolverTest {
     public void testSolve() {
         long heapsize = Runtime.getRuntime().totalMemory();
         System.out.println("heapsize is :: " + heapsize * .000000000125);
-        Solver solver = new Solver(PuzzlePieces.MINIS_SQUARE);
+        Solver solver = new Solver(PuzzlePieces.L);
         solver.solve();
     }
 
