@@ -2,6 +2,8 @@ package io.github.mathieusoysal;
 
 import io.github.mathieusoysal.puzzle_piece.PuzzlePieces;
 import io.github.mathieusoysal.solution.BackTracking;
+import io.github.mathieusoysal.solution.BinIterator;
+import io.github.mathieusoysal.solution.BoardEvaluator;
 import io.github.mathieusoysal.solution.SolutionsManager;
 
 public class Solver {
@@ -86,7 +88,11 @@ public class Solver {
                         int nbUseOfZ,
                         int nbUseOfInversedL,
                         int nbUseOfSquare, int nbUseOfMiniSquare, int nbUseOfStick) {
-                for (long pieceOnBoard : piece.getAllPossiblePlacements()) {
+                long list = BoardEvaluator.getBestPlacementOnTheBoard(board, piece);
+                long[] allPossiblePlacements = piece.getAllPossiblePlacements();
+                for (int i = BinIterator.getNextIndex(list, 0); BinIterator.hasNext(list, allPossiblePlacements.length,
+                                i); i = BinIterator.getNextIndex(list, i + 1)) {
+                        long pieceOnBoard = allPossiblePlacements[i];
                         if (BoardManager.canPutPieceIntoBoard(board, pieceOnBoard)) {
                                 solve(BoardManager.putPieceIntoBoard(board, pieceOnBoard), deep + 1, indexPosition,
                                                 nbUseOfL,
